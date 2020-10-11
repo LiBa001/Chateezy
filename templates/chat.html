@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Chateezy chat</title>
+</head>
+<body>
+	<h1>Chateezy web chat</h1>
+	<p><i>Chatting as "{{ username }}".</i></p>
+	
+	<div id="chat" style="float: left; width: 50%; height: 75vh; overflow-y: auto; margin: 1em; padding: 1em; display: block; word-wrap: break-word;"></div>
+
+	<div style="border: 1px solid grey; overflow: hidden; padding: 1em;">
+		<h4>Online:</h4>
+		<ul id="user-list">
+		{% for user in users %}
+			<li id="{{ user.uuid }}">{{ user.username }}</li>
+		{% endfor %}
+		</ul>
+	</div>
+	
+	<div style="position: absolute; left: 0; bottom: 0; padding: 2em;">
+		<input id="msg-input" type="text" name="message" placeholder="say something . . ." size="50">
+		<button id="send-btn">send</button>
+	</div>
+	
+	<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
